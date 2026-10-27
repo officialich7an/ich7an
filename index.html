@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>اشحن - شحن فوري لجميع الألعاب</title>
+  <meta name="description" content="اشحن: شحن ببجي وفري فاير وفالورانت وإكس بوكس جيم باس، ومفاتيح الألعاب وبطاقات الهدايا والبرامج." />
+  <meta name="theme-color" content="#07060c" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="apple-touch-icon" href="./__grok/icon-180.png" />
+  <meta property="og:title" content="اشحن - شحن فوري لجميع الألعاب" />
+  <meta property="og:description" content="اشحن: شحن ببجي وفري فاير وفالورانت وإكس بوكس جيم باس، ومفاتيح الألعاب وبطاقات الهدايا والبرامج." />
+  <meta property="og:image" content="./og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    /* ensure relative paths work when opened or served from this folder */
+    .live-bg::before { background-image: url("./bg/poster.jpg") !important; }
+  </style>
+</head>
+<body>
+  <div class="live-bg" aria-hidden="true">
+    <video id="live-video" autoplay muted loop playsinline poster="./bg/poster.jpg" preload="metadata">
+      <source src="./bg/match.mp4" type="video/mp4" />
+    </video>
+    <div class="live-veil"></div>
+  </div>
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <div id="scroll-bar" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="logo neon" href="#top">اشحن</a>
+      <p class="slogan">شحن فوري لجميع الألعاب</p>
+      <a class="btn btn-primary order-link" href="https://t.me/a9999in" target="_blank" rel="noopener noreferrer">
+        <svg class="tg-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.7 10.6c-1.28.5-1.27 1.2-.23 1.52l4.84 1.51 11.2-7.07c.53-.32 1.01-.15.61.21l-9.07 8.19-.35 5.05c.51 0 .74-.23 1.02-.51l2.45-2.38 5.09 3.76c.94.52 1.61.25 1.84-.87l3.34-15.74c.34-1.36-.52-1.98-1.74-1.55z"/></svg>
+        <span>تواصل معنا</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">شحن · مفاتيح · بطاقات · برامج</p>
+        <h1 class="neon">اشحن</h1>
+        <p class="lede">شحن ببجي • فري فاير • فالورانت • إكس بوكس جيم باس وأكثر</p>
+        <p class="supply">مفاتيح ستيم وبلايستيشن وإكس بوكس، بطاقات هدايا، اشتراكات وبرامج — التوفير عبر Eneba و G2G</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary order-link" href="https://t.me/a9999in" target="_blank" rel="noopener noreferrer">
+            <svg class="tg-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.7 10.6c-1.28.5-1.27 1.2-.23 1.52l4.84 1.51 11.2-7.07c.53-.32 1.01-.15.61.21l-9.07 8.19-.35 5.05c.51 0 .74-.23 1.02-.51l2.45-2.38 5.09 3.76c.94.52 1.61.25 1.84-.87l3.34-15.74c.34-1.36-.52-1.98-1.74-1.55z"/></svg>
+            <span>تواصل معنا على تليجرام</span>
+          </a>
+          <a class="btn btn-ghost" href="#products">تصفح الباقات</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="chip-bar">
+      <div class="wrap">
+        <nav class="chips" aria-label="أقسام المتجر" id="chip-nav"></nav>
+      </div>
+    </div>
+
+    <div id="products" class="wrap catalog">
+      <label class="search">
+        <span class="sr">ابحث في الباقات</span>
+        <input id="search-input" type="search" placeholder="ابحث عن لعبة، بطاقة أو برنامج" enterkeyhint="search" />
+      </label>
+      <div id="catalog-root"></div>
+    </div>
+
+    <section class="wrap how" id="how">
+      <h2>كيف تطلب</h2>
+      <ol class="steps" id="steps-list"></ol>
+      <a class="btn btn-primary how-btn order-link" href="https://t.me/a9999in" target="_blank" rel="noopener noreferrer">
+        <svg class="tg-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.7 10.6c-1.28.5-1.27 1.2-.23 1.52l4.84 1.51 11.2-7.07c.53-.32 1.01-.15.61.21l-9.07 8.19-.35 5.05c.51 0 .74-.23 1.02-.51l2.45-2.38 5.09 3.76c.94.52 1.61.25 1.84-.87l3.34-15.74c.34-1.36-.52-1.98-1.74-1.55z"/></svg>
+        <span>تواصل معنا على تليجرام</span>
+      </a>
+    </section>
+
+    <section class="wrap pay" id="pay">
+      <h2>طرق الدفع</h2>
+      <div class="pay-grid">
+        <div class="pay-card reveal">
+          <div class="pay-icon">📱</div>
+          <h3>بريدي موب</h3>
+          <p>Baridi Mob — تحويل فوري عبر تطبيق بريد الجزائر</p>
+        </div>
+        <div class="pay-card reveal">
+          <div class="pay-icon">🏦</div>
+          <h3>CCP</h3>
+          <p>حساب جاري بريدي — تحويل بنكي عبر بريد الجزائر</p>
+        </div>
+        <div class="pay-card reveal">
+          <div class="pay-icon">💵</div>
+          <h3>USD Coin</h3>
+          <p>USDC — دفع بالعملة الرقمية (مستقر مقابل الدولار)</p>
+        </div>
+      </div>
+      <p class="pay-note">بعد الطلب على تليجرام نرسل لك تفاصيل الدفع المناسبة. الاستلام فوري بعد التأكيد.</p>
+    </section>
+
+  </main>
+
+  <footer class="wrap site-footer">
+    <p class="footer-brand neon">اشحن - شحن آمن وسريع</p>
+    <a class="btn btn-primary order-link" href="https://t.me/a9999in" target="_blank" rel="noopener noreferrer">
+      <svg class="tg-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.7 10.6c-1.28.5-1.27 1.2-.23 1.52l4.84 1.51 11.2-7.07c.53-.32 1.01-.15.61.21l-9.07 8.19-.35 5.05c.51 0 .74-.23 1.02-.51l2.45-2.38 5.09 3.76c.94.52 1.61.25 1.84-.87l3.34-15.74c.34-1.36-.52-1.98-1.74-1.55z"/></svg>
+      <span>تواصل معنا على تليجرام</span>
+    </a>
+    <p class="fine">طرق الدفع: بريدي موب · CCP · USD Coin (USDC)</p>
+    <p class="fine">الأسعار قابلة للتغيير حسب سعر الدولار</p>
+    <p class="fine">اشحن متجر مستقل وغير تابع لشركات تطوير الألعاب أو ناشريها. Eneba و G2G علامتان لمالكيهما، ونستخدمهما كمصدر توريد فقط.</p>
+  </footer>
+
+  <a class="fab order-link" href="https://t.me/a9999in" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا على تليجرام">
+    <svg class="tg-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.7 10.6c-1.28.5-1.27 1.2-.23 1.52l4.84 1.51 11.2-7.07c.53-.32 1.01-.15.61.21l-9.07 8.19-.35 5.05c.51 0 .74-.23 1.02-.51l2.45-2.38 5.09 3.76c.94.52 1.61.25 1.84-.87l3.34-15.74c.34-1.36-.52-1.98-1.74-1.55z"/></svg>
+  </a>
+
+  <script>
+    const EMBEDDED_CATALOG = {"TELEGRAM_URL": "https://t.me/a9999in", "QUOTE": "دج", "sections": [{"id": "pubg", "chip": "PUBG Mobile", "title": "PUBG Mobile", "products": [{"name": "60 UC", "art": "PUBG", "tone": "violet", "packages": [{"name": "60 UC", "price": "280 – 320 دج"}]}, {"name": "325 UC", "art": "PUBG", "tone": "violet", "packages": [{"name": "325 UC", "price": "1,400 – 1,550 دج"}]}, {"name": "660 UC", "art": "PUBG", "tone": "violet", "packages": [{"name": "660 UC", "price": "2,700 – 2,900 دج"}]}, {"name": "1,800 UC", "art": "PUBG", "tone": "violet", "packages": [{"name": "1,800 UC", "price": "7,000 – 7,500 دج"}]}, {"name": "3,850 UC", "art": "PUBG", "tone": "violet", "packages": [{"name": "3,850 UC", "price": "14,500 – 15,500 دج"}]}, {"name": "8,100 UC", "art": "PUBG", "tone": "violet", "packages": [{"name": "8,100 UC", "price": "29,000 – 31,000 دج"}]}, {"name": "Elite Pass", "art": "PUBG", "tone": "violet", "packages": [{"name": "Elite Pass", "price": "1,800 – 2,200 دج"}]}]}, {"id": "freefire", "chip": "Free Fire", "title": "Free Fire", "products": [{"name": "100 + 10 جوهرة", "art": "Free Fire", "tone": "blue", "packages": [{"name": "100 + 10 جوهرة", "price": "280 – 320 دج"}]}, {"name": "210 + 21 جوهرة", "art": "Free Fire", "tone": "blue", "packages": [{"name": "210 + 21 جوهرة", "price": "550 – 620 دج"}]}, {"name": "530 + 53 جوهرة", "art": "Free Fire", "tone": "blue", "packages": [{"name": "530 + 53 جوهرة", "price": "1,350 – 1,500 دج"}]}, {"name": "1,080 + 108 جوهرة", "art": "Free Fire", "tone": "blue", "packages": [{"name": "1,080 + 108 جوهرة", "price": "2,700 – 3,000 دج"}]}, {"name": "2,200 + 220 جوهرة", "art": "Free Fire", "tone": "blue", "packages": [{"name": "2,200 + 220 جوهرة", "price": "5,400 – 5,900 دج"}]}, {"name": "Booyah Pass", "art": "Free Fire", "tone": "blue", "packages": [{"name": "Booyah Pass", "price": "1,100 – 1,300 دج"}]}, {"name": "Weekly Membership", "art": "Free Fire", "tone": "blue", "packages": [{"name": "Weekly Membership", "price": "700 – 850 دج"}]}]}, {"id": "cod", "chip": "Call of Duty Mobile", "title": "Call of Duty Mobile", "products": [{"name": "80 – 160 CP", "art": "COD Mobile", "tone": "mix", "packages": [{"name": "80 – 160 CP", "price": "350 – 600 دج"}]}, {"name": "420 – 880 CP", "art": "COD Mobile", "tone": "mix", "packages": [{"name": "420 – 880 CP", "price": "1,400 – 2,800 دج"}]}, {"name": "2,400 CP", "art": "COD Mobile", "tone": "mix", "packages": [{"name": "2,400 CP", "price": "6,500 – 7,200 دج"}]}]}, {"id": "valorant", "chip": "Valorant", "title": "Valorant", "products": [{"name": "475 – 1,000 VP", "art": "Valorant", "tone": "violet", "packages": [{"name": "475 – 1,000 VP", "price": "1,800 – 3,500 دج"}]}, {"name": "2,050 – 3,650 VP", "art": "Valorant", "tone": "violet", "packages": [{"name": "2,050 – 3,650 VP", "price": "6,500 – 11,000 دج"}]}, {"name": "5,350+ VP", "art": "Valorant", "tone": "violet", "packages": [{"name": "5,350+ VP", "price": "15,000+ دج"}]}, {"name": "Battle Pass", "art": "Valorant", "tone": "violet", "packages": [{"name": "Battle Pass", "price": "2,800 – 3,500 دج"}]}]}, {"id": "xbox", "chip": "Xbox Game Pass", "title": "Xbox Game Pass", "products": [{"name": "Ultimate 1 شهر", "art": "Game Pass", "tone": "blue", "packages": [{"name": "Ultimate 1 شهر", "price": "1,800 – 2,400 دج"}]}, {"name": "Ultimate 3 أشهر", "art": "Game Pass", "tone": "blue", "packages": [{"name": "Ultimate 3 أشهر", "price": "4,800 – 5,800 دج"}]}, {"name": "Ultimate 6 أشهر", "art": "Game Pass", "tone": "blue", "packages": [{"name": "Ultimate 6 أشهر", "price": "8,500 – 10,000 دج"}]}, {"name": "Ultimate 12 شهر", "art": "Game Pass", "tone": "blue", "packages": [{"name": "Ultimate 12 شهر", "price": "15,000 – 17,500 دج"}]}, {"name": "PC Game Pass 1 شهر", "art": "Game Pass", "tone": "blue", "packages": [{"name": "PC Game Pass 1 شهر", "price": "1,600 – 2,000 دج"}]}]}, {"id": "more-topup", "chip": "شحن إضافي", "title": "شحن إضافي", "note": "فورتنايت، روبلوكس، موبايل ليجندز وغيرها. السعر النهائي بالدينار يوصلك على تليجرام قبل الدفع.", "products": [{"name": "Fortnite", "art": "Fortnite", "tone": "mix", "packages": [{"name": "1,000 V-Bucks", "price": "2,500 – 2,800 دج"}, {"name": "2,800 V-Bucks", "price": "6,000 – 6,500 دج"}, {"name": "5,000 V-Bucks", "price": "9,500 – 10,500 دج"}, {"name": "13,500 V-Bucks", "price": "23,500 – 25,500 دج"}]}, {"name": "Mobile Legends", "art": "MLBB", "tone": "violet", "packages": [{"name": "100 Diamond", "price": "450 – 550 دج"}, {"name": "250 Diamond", "price": "1,000 – 1,200 دج"}, {"name": "500 Diamond", "price": "1,900 – 2,200 دج"}, {"name": "Weekly Pass", "price": "900 – 1,100 دج"}]}, {"name": "Roblox", "art": "Roblox", "tone": "blue", "packages": [{"name": "80 Robux", "price": "450 – 550 دج"}, {"name": "400 Robux", "price": "1,600 – 1,900 دج"}, {"name": "800 Robux", "price": "3,100 – 3,500 دج"}, {"name": "1,700 Robux", "price": "6,200 – 6,800 دج"}]}, {"name": "Clash of Clans", "art": "Clash", "tone": "mix", "packages": [{"name": "500 ذهب", "price": "1,400 – 1,700 دج"}, {"name": "1,200 ذهب", "price": "2,800 – 3,200 دج"}, {"name": "Gold Pass", "price": "2,000 – 2,400 دج"}]}, {"name": "Brawl Stars", "art": "Brawl", "tone": "violet", "packages": [{"name": "30 جوهرة", "price": "450 – 550 دج"}, {"name": "80 جوهرة", "price": "900 – 1,100 دج"}, {"name": "170 جوهرة", "price": "1,700 – 2,000 دج"}, {"name": "Brawl Pass", "price": "2,000 – 2,400 دج"}]}, {"name": "Genshin Impact", "art": "Genshin", "tone": "blue", "packages": [{"name": "60 Genesis", "price": "450 – 550 دج"}, {"name": "300 Genesis", "price": "1,600 – 1,900 دج"}, {"name": "980 Genesis", "price": "4,800 – 5,400 دج"}, {"name": "Welkin Moon", "price": "1,600 – 1,900 دج"}]}]}, {"id": "gifts", "chip": "بطاقات الهدايا", "title": "بطاقات الهدايا", "note": "ستيم، بلايستيشن، إكس بوكس، آبل، أمازون وغيرها. القيمة ظاهرة على البطاقة، والسعر بالدينار.", "products": [{"name": "Steam Wallet", "art": "Steam", "tone": "blue", "packages": [{"name": "5€", "price": "1,800 – 2,100 دج"}, {"name": "10€", "price": "3,400 – 3,800 دج"}, {"name": "20€", "price": "6,600 – 7,200 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}, {"name": "100€", "price": "31,500 – 34,000 دج"}]}, {"name": "PSN أوروبا", "art": "PSN", "tone": "violet", "packages": [{"name": "10€", "price": "3,400 – 3,800 دج"}, {"name": "20€", "price": "6,600 – 7,200 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}, {"name": "100€", "price": "31,500 – 34,000 دج"}]}, {"name": "PSN هولندا", "art": "PSN", "tone": "violet", "packages": [{"name": "10€", "price": "3,400 – 3,800 دج"}, {"name": "20€", "price": "6,600 – 7,200 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}, {"name": "100€", "price": "31,500 – 34,000 دج"}]}, {"name": "PSN أمريكا", "art": "PSN", "tone": "violet", "packages": [{"name": "10$", "price": "3,100 – 3,500 دج"}, {"name": "20$", "price": "6,000 – 6,600 دج"}, {"name": "50$", "price": "14,700 – 16,000 دج"}, {"name": "100$", "price": "29,200 – 31,500 دج"}]}, {"name": "Xbox Gift Card", "art": "Xbox", "tone": "blue", "packages": [{"name": "10€", "price": "3,400 – 3,800 دج"}, {"name": "15€", "price": "5,000 – 5,500 دج"}, {"name": "25€", "price": "8,200 – 9,000 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}]}, {"name": "Apple / iTunes", "art": "Apple", "tone": "mix", "packages": [{"name": "10€", "price": "3,400 – 3,800 دج"}, {"name": "15€", "price": "5,000 – 5,500 دج"}, {"name": "25€", "price": "8,200 – 9,000 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}]}, {"name": "Google Play", "art": "Google Play", "tone": "blue", "packages": [{"name": "10€", "price": "3,400 – 3,800 دج"}, {"name": "25€", "price": "8,200 – 9,000 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}]}, {"name": "Amazon", "art": "Amazon", "tone": "mix", "packages": [{"name": "10€", "price": "3,400 – 3,800 دج"}, {"name": "25€", "price": "8,200 – 9,000 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}, {"name": "100€", "price": "31,500 – 34,000 دج"}]}, {"name": "Nintendo eShop", "art": "Nintendo", "tone": "violet", "packages": [{"name": "15€", "price": "5,000 – 5,500 دج"}, {"name": "25€", "price": "8,200 – 9,000 دج"}, {"name": "50€", "price": "16,000 – 17,500 دج"}]}, {"name": "Spotify", "art": "Spotify", "tone": "blue", "packages": [{"name": "1 شهر", "price": "1,000 – 1,300 دج"}, {"name": "3 أشهر", "price": "2,600 – 3,100 دج"}, {"name": "12 شهر", "price": "9,000 – 10,500 دج"}]}, {"name": "Netflix", "art": "Netflix", "tone": "mix", "packages": [{"name": "1 شهر", "price": "1,800 – 2,400 دج"}, {"name": "3 أشهر", "price": "5,000 – 6,200 دج"}]}]}, {"id": "keys", "chip": "مفاتيح الألعاب", "title": "مفاتيح الألعاب", "note": "مفاتيح ستيم، إكس بوكس، بلايستيشن ونينتندو. أي لعبة غير مذكورة نطلبها لك بالاسم.", "products": [{"name": "Call of Duty: Modern Warfare 4", "art": "CoD", "tone": "mix", "packages": [{"name": "ويندوز / Xbox — عالمي", "price": "12,000 – 15,000 دج"}, {"name": "أوروبا", "price": "12,000 – 15,000 دج"}]}, {"name": "Minecraft Java & Bedrock", "art": "Minecraft", "tone": "blue", "packages": [{"name": "PC عالمي", "price": "7,500 – 9,000 دج"}, {"name": "Windows Store", "price": "7,500 – 9,000 دج"}]}, {"name": "GTA VI", "art": "GTA", "tone": "violet", "packages": [{"name": "PS5 أوروبا", "price": "18,000 – 22,000 دج"}, {"name": "Xbox Series أوروبا", "price": "18,000 – 22,000 دج"}]}, {"name": "EA Sports FC 27", "art": "EA FC", "tone": "mix", "packages": [{"name": "PS5", "price": "12,000 – 15,000 دج"}, {"name": "Xbox", "price": "12,000 – 15,000 دج"}, {"name": "PC", "price": "10,000 – 13,000 دج"}]}, {"name": "Phantom Blade Zero", "art": "PBZ", "tone": "violet", "packages": [{"name": "Steam عالمي", "price": "11,000 – 14,000 دج"}]}, {"name": "Planet Zoo 2", "art": "Planet Zoo", "tone": "blue", "packages": [{"name": "Steam عالمي", "price": "9,000 – 12,000 دج"}]}, {"name": "Project Zomboid", "art": "Zomboid", "tone": "mix", "packages": [{"name": "Steam عالمي", "price": "4,500 – 6,000 دج"}]}, {"name": "Star Wars: Galactic Racer", "art": "Star Wars", "tone": "violet", "packages": [{"name": "Steam أوروبا", "price": "9,000 – 12,000 دج"}]}, {"name": "نينتندو — أي لعبة", "art": "Nintendo", "tone": "blue", "packages": [{"name": "Switch — اكتب اسم اللعبة", "price": "حسب الاسم + 200 دج"}]}, {"name": "أي لعبة أخرى", "art": "أي لعبة", "tone": "mix", "packages": [{"name": "ستيم", "price": "حسب اللعبة + 200 دج"}, {"name": "PSN", "price": "حسب اللعبة + 200 دج"}, {"name": "Xbox", "price": "حسب اللعبة + 200 دج"}, {"name": "نينتندو", "price": "حسب اللعبة + 200 دج"}]}]}, {"id": "software", "chip": "برامج واشتراكات", "title": "برامج واشتراكات", "note": "برامج واشتراكات رقمية. نؤكد المنطقة ومدة التفعيل قبل الدفع.", "products": [{"name": "NordVPN", "art": "NordVPN", "tone": "blue", "packages": [{"name": "شهر", "price": "1,200 – 1,600 دج"}, {"name": "سنة", "price": "5,500 – 7,000 دج"}]}, {"name": "Windows 11", "art": "Windows", "tone": "mix", "packages": [{"name": "Home", "price": "4,500 – 6,000 دج"}, {"name": "Pro", "price": "6,500 – 8,500 دج"}]}, {"name": "Microsoft 365", "art": "Microsoft", "tone": "violet", "packages": [{"name": "شخصي", "price": "3,500 – 4,500 دج"}, {"name": "عائلي", "price": "5,500 – 7,000 دج"}]}, {"name": "مكافحة فيروسات", "art": "أمان", "tone": "blue", "packages": [{"name": "سنة", "price": "2,500 – 3,500 دج"}]}]}], "steps": [{"n": "1", "title": "اختر الباقة"}, {"n": "2", "title": "اضغط \"اطلب الآن\""}, {"n": "3", "title": "راسلنا على تليجرام"}, {"n": "4", "title": "ادفع واستلم فوراً"}]};
+
+    const TG_ICON = `<svg class="tg-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.7 10.6c-1.28.5-1.27 1.2-.23 1.52l4.84 1.51 11.2-7.07c.53-.32 1.01-.15.61.21l-9.07 8.19-.35 5.05c.51 0 .74-.23 1.02-.51l2.45-2.38 5.09 3.76c.94.52 1.61.25 1.84-.87l3.34-15.74c.34-1.36-.52-1.98-1.74-1.55z"/></svg>`;
+
+    function norm(value) {
+      return value
+        .toLowerCase()
+        .replace(/[أإآ]/g, "ا")
+        .replace(/ة/g, "ه")
+        .replace(/ى/g, "ي")
+        .trim();
+    }
+
+    function orderLink(text, className) {
+      return `<a class="${className}" href="${data.TELEGRAM_URL}" target="_blank" rel="noopener noreferrer">${TG_ICON}<span>${text}</span></a>`;
+    }
+
+    function productCard(product) {
+      const single = product.packages.length === 1;
+      const pkgs = product.packages
+        .map((row) => `<li class="pkg"><span class="pkg-name">${escapeHtml(row.name)}</span><span class="pkg-price">${escapeHtml(row.price)}</span></li>`)
+        .join("");
+      return `
+        <article class="card reveal">
+          <div class="art" data-tone="${product.tone}"><span>${escapeHtml(product.art)}</span></div>
+          ${single ? "" : `<h3 class="card-title">${escapeHtml(product.name)}</h3>`}
+          <ul class="pkgs">${pkgs}</ul>
+          ${orderLink("اطلب الآن", "btn btn-primary")}
+        </article>`;
+    }
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    let data = null;
+
+    function load() {
+      data = EMBEDDED_CATALOG;
+      // update all order links
+      document.querySelectorAll(".order-link").forEach((a) => {
+        a.href = data.TELEGRAM_URL;
+      });
+
+      // chips
+      const nav = document.getElementById("chip-nav");
+      nav.innerHTML = data.sections
+        .map(
+          (s) =>
+            `<a href="#${s.id}" data-chip="${s.id}" class="chip">${escapeHtml(s.chip)}</a>`
+        )
+        .join("");
+
+      // steps
+      document.getElementById("steps-list").innerHTML = data.steps
+        .map(
+          (step) =>
+            `<li class="step reveal"><span class="step-n">${escapeHtml(step.n)}</span><p>${escapeHtml(step.title)}</p></li>`
+        )
+        .join("");
+
+      renderCatalog("");
+      setupInteractions();
+    }
+
+    function renderCatalog(query) {
+      const q = norm(query);
+      const root = document.getElementById("catalog-root");
+      let visible = data.sections;
+      if (q) {
+        visible = data.sections
+          .map((section) => ({
+            ...section,
+            products: section.products.filter((product) => {
+              const blob = [
+                section.title,
+                product.name,
+                product.art,
+                ...product.packages.map((p) => `${p.name} ${p.price}`),
+              ].join(" ");
+              return norm(blob).includes(q);
+            }),
+          }))
+          .filter((section) => section.products.length > 0);
+      }
+
+      if (visible.length === 0) {
+        root.innerHTML = `
+          <div class="empty">
+            <p>ما لقيناش هاد الطلب في القائمة. ابعثلنا الاسم على تليجرام ونوفّروه.</p>
+            ${orderLink("تواصل معنا على تليجرام", "btn btn-primary")}
+          </div>`;
+        return;
+      }
+
+      root.innerHTML = visible
+        .map(
+          (section) => `
+        <section id="${section.id}" class="block">
+          <header class="block-head">
+            <h2>${escapeHtml(section.title)}</h2>
+            ${section.note ? `<p>${escapeHtml(section.note)}</p>` : ""}
+          </header>
+          <div class="grid">
+            ${section.products.map(productCard).join("")}
+          </div>
+        </section>`
+        )
+        .join("");
+
+      // re-observe reveals
+      observeReveals();
+    }
+
+    function observeReveals() {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const nodes = [...document.querySelectorAll(".reveal")];
+      if (reduce.matches) {
+        nodes.forEach((n) => n.classList.add("in"));
+        return;
+      }
+      const reveal = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("in");
+            reveal.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.14 }
+      );
+      nodes.forEach((n) => reveal.observe(n));
+    }
+
+    function setupInteractions() {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const video = document.querySelector("#live-video");
+      const syncVideo = () => {
+        if (!video) return;
+        if (reduce.matches) video.pause();
+        else video.play().catch(() => {});
+      };
+      syncVideo();
+      reduce.addEventListener("change", syncVideo);
+
+      const bar = document.getElementById("scroll-bar");
+      const onScroll = () => {
+        if (!bar) return;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? window.scrollY / max : 0;
+        bar.style.transform = `scaleX(${ratio})`;
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const sectionsIo = new IntersectionObserver(
+        (entries) => {
+          const hit = entries.find((e) => e.isIntersecting);
+          if (!hit) return;
+          document.querySelectorAll("[data-chip]").forEach((chip) => {
+            chip.classList.toggle("on", chip.dataset.chip === hit.target.id);
+          });
+        },
+        { rootMargin: "-42% 0px -48% 0px", threshold: 0 }
+      );
+      data.sections.forEach((section) => {
+        const el = document.getElementById(section.id);
+        if (el) sectionsIo.observe(el);
+      });
+
+      const glow = document.getElementById("cursor-glow");
+      window.addEventListener(
+        "pointermove",
+        (event) => {
+          if (!glow || event.pointerType !== "mouse") return;
+          glow.style.left = `${event.clientX}px`;
+          glow.style.top = `${event.clientY}px`;
+        },
+        { passive: true }
+      );
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        renderCatalog(e.target.value);
+      });
+
+      document.getElementById("chip-nav").addEventListener("click", (e) => {
+        const a = e.target.closest("a[data-chip]");
+        if (a) {
+          document.getElementById("search-input").value = "";
+          renderCatalog("");
+        }
+      });
+
+      observeReveals();
+    }
+
+    load();
+  </script>
+</body>
+</html>
